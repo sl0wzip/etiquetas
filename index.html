@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Etiquetas • Sementes Maná</title>
+<title>Sementes Maná - Etiquetas</title>
 <style>
 :root {
   color-scheme: light;
@@ -157,8 +157,39 @@ button:active:not(:disabled), .filebtn:active { transform: translateY(0); }
   color: #28583d;
 }
 .secondary:hover { background: #e9f2eb; }
-.filebtn { margin: 0; text-transform: none; letter-spacing: 0; }
-.filebtn input { display: none; }
+/* O seletor global `label` também estiliza este controle. Aqui, o estilo
+   é redefinido por completo para que ele se comporte como um botão. */
+.actions > .filebtn {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 45px;
+  margin: 0;
+  padding: 12px 17px;
+  border: 1px solid #dce8df;
+  border-radius: 10px;
+  background: #f2f7f3;
+  color: #28583d;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+  white-space: normal;
+  cursor: pointer;
+}
+.actions > .filebtn input[type="file"] { display: none; }
+.actions > .filebtn:hover {
+  background: #e9f2eb;
+}
+.actions > .filebtn:focus-within {
+  outline: 3px solid rgba(45, 139, 83, .18);
+  outline-offset: 2px;
+}
 button:disabled { opacity: .48; cursor: not-allowed; box-shadow: none; }
 .status {
   min-height: 20px;
@@ -220,7 +251,11 @@ main > .hint:last-child {
   .grid { grid-template-columns: 1fr; gap: 16px; }
   .wide { grid-column: auto; }
   .actions { align-items: stretch; flex-direction: column; }
-  .actions button, .actions .filebtn { width: 100%; }
+  .actions > button, .actions > .filebtn {
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
   .preview iframe { height: 360px; }
 }
 @media (prefers-reduced-motion: reduce) {
